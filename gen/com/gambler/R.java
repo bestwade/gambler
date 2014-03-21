@@ -24,28 +24,64 @@ public final class R {
         public static final int ic_action_about=0x7f020000;
         public static final int ic_action_refresh=0x7f020001;
         public static final int ic_launcher=0x7f020002;
+        public static final int setting=0x7f020003;
     }
     public static final class id {
-        public static final int action_about=0x7f080009;
-        public static final int action_exit=0x7f08000a;
-        public static final int action_refresh=0x7f080008;
-        public static final int action_settings=0x7f08000b;
-        public static final int linearLayout=0x7f080002;
+        public static final int action_about=0x7f080029;
+        public static final int action_exit=0x7f08002a;
+        public static final int action_refresh=0x7f080028;
+        public static final int action_settings=0x7f08002b;
+        public static final int addbtn=0x7f080026;
+        public static final int cancelbtn=0x7f08001a;
+        public static final int cardnumtext=0x7f080021;
+        public static final int cardpermoney=0x7f080004;
+        public static final int clearbtn=0x7f080027;
+        public static final int edit_power=0x7f080023;
+        public static final int edit_text=0x7f080020;
+        public static final int enter=0x7f080013;
+        public static final int enterbtn=0x7f080019;
+        public static final int linearLayout=0x7f080007;
+        public static final int linearLayout2=0x7f08000e;
+        public static final int linearLayout3=0x7f080018;
+        public static final int linearLayout4=0x7f080025;
+        public static final int linearLayout5=0x7f080024;
+        public static final int listView=0x7f08000d;
+        public static final int listplayer=0x7f08001b;
+        public static final int listplayer1=0x7f08001c;
+        public static final int listplayer2=0x7f08001d;
+        public static final int listplayer3=0x7f08001e;
+        public static final int listplayer4=0x7f08001f;
+        public static final int numberPicker1=0x7f080014;
+        public static final int numberPicker2=0x7f080015;
+        public static final int numberPicker3=0x7f080016;
+        public static final int numberPicker4=0x7f080017;
         public static final int pager=0x7f080001;
-        public static final int player=0x7f080003;
-        public static final int player1=0x7f080004;
-        public static final int player2=0x7f080005;
-        public static final int player3=0x7f080006;
-        public static final int player4=0x7f080007;
+        public static final int player=0x7f080008;
+        public static final int player1=0x7f080009;
+        public static final int player2=0x7f08000a;
+        public static final int player3=0x7f08000b;
+        public static final int player4=0x7f08000c;
+        public static final int powertext=0x7f080022;
         public static final int progressBar=0x7f080000;
+        public static final int rulestext=0x7f080005;
+        public static final int setting=0x7f080006;
+        public static final int settingLayout=0x7f080002;
+        public static final int settingtextlayout=0x7f080003;
+        public static final int totalplayer1=0x7f08000f;
+        public static final int totalplayer2=0x7f080010;
+        public static final int totalplayer3=0x7f080011;
+        public static final int totalplayer4=0x7f080012;
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int action_progressbar=0x7f030001;
         public static final int activity_main=0x7f030002;
         public static final int bigdee=0x7f030003;
-        public static final int host=0x7f030004;
-        public static final int majer=0x7f030005;
+        public static final int enternum=0x7f030004;
+        public static final int host=0x7f030005;
+        public static final int listitem=0x7f030006;
+        public static final int majer=0x7f030007;
+        public static final int setting=0x7f030008;
     }
     public static final class menu {
         public static final int activity_main_actions=0x7f070000;
