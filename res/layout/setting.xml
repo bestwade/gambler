@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+       android:id="@+id/linearLayout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:gravity="center"
+       android:orientation="vertical" >
+
+
+<EditText  
+    android:id="@+id/edit_text"    
+    android:layout_weight="2"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"   
+    android:hint="Set $/Card (Default $1/card)"
+    android:inputType="numberDecimal"/>  
+       
+   </LinearLayout>
+<LinearLayout
+       android:id="@+id/linearLayout2"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:gravity="center"
+       android:orientation="horizontal" >
+<TextView
+           android:id="@+id/cardnumtext"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text=">="
+           android:textColor="#000"
+           android:textSize="20sp" />
+<NumberPicker
+         android:id="@+id/numberPicker1"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+            android:layout_weight="2" 
+           />
+<TextView
+           android:id="@+id/powertext"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="X"
+           android:textColor="#000"
+           android:textSize="20sp" />
+<EditText  
+    android:id="@+id/edit_power"    
+    android:layout_weight="2"
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"   
+    android:hint="power"
+    android:inputType="number"/>  
+       
+  
+ </LinearLayout>
+  <LinearLayout
+       android:id="@+id/linearLayout5"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:gravity="center"
+       android:orientation="horizontal" >
+<TextView
+           android:id="@+id/rulestext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:textColor="#000"
+           android:textSize="20sp" />
+ </LinearLayout>
+ <LinearLayout
+       android:id="@+id/linearLayout4"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:gravity="center"
+       android:orientation="horizontal" >
+<Button
+    android:id="@+id/addbtn"
+    
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Add Rule" />
+
+<Button
+    android:id="@+id/clearbtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Clear All Rules" />
+ </LinearLayout>
+<LinearLayout
+       android:id="@+id/linearLayout3"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:gravity="center"
+       android:orientation="horizontal" >
+<Button
+    android:id="@+id/enterbtn"
+    android:layout_weight="2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Set" />
+
+<Button
+    android:id="@+id/cancelbtn"
+    android:layout_weight="2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Cancel" />
+ </LinearLayout>
+ 
+
+</LinearLayout>
