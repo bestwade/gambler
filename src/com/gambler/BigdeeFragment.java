@@ -47,6 +47,12 @@ public class BigdeeFragment extends Fragment {
 	private TextView reseltplayer4;
 	private Button insectnum;
 	private Button setting;
+	
+	private Button btn_start;
+	private Button btn_clear;
+	private Button btn_round;
+	private Button btn_end;
+
 
 	//private rules[] rule=null;
 	ArrayList<rules> rule = new ArrayList<rules>();
@@ -86,7 +92,70 @@ public class BigdeeFragment extends Fragment {
     	
     	insectnum = (Button) rootView.findViewById(R.id.enter);
     	setting = (Button) rootView.findViewById(R.id.setting);
+    	btn_start=(Button) rootView.findViewById(R.id.button_start);
+    	btn_clear=(Button) rootView.findViewById(R.id.button_clear);
+    	btn_round=(Button) rootView.findViewById(R.id.button_insert);
+    	btn_end=(Button) rootView.findViewById(R.id.button_end);
     	
+    	btn_start.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				popupsetting(textmoneypercard);
+				btn_start.setVisibility(View.GONE);
+		    	btn_clear.setVisibility(View.GONE);
+		    	btn_round.setVisibility(View.VISIBLE);
+		    	btn_end.setVisibility(View.VISIBLE);
+		    	setting.setVisibility(View.GONE);
+			}
+		});
+    	btn_clear.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				
+				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+						getActivity());
+
+					alertDialogBuilder.setTitle("Notice!");
+
+					alertDialogBuilder
+						.setMessage("Are you sure to clear all record?")
+						//.setCancelable(false)
+						.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int id) {
+								userArray.clear();
+								gobalround = 1;
+								userAdapter.notifyDataSetChanged();
+								updatereselt(userArray,moneypercard,reseltplayer1,reseltplayer2,reseltplayer3,reseltplayer4);
+							}
+						  })
+						.setNegativeButton("No",new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog,int id) {
+								// if this button is clicked, just close
+								// the dialog box and do nothing
+								dialog.cancel();
+							}
+						});
+						AlertDialog alertDialog = alertDialogBuilder.create();
+						alertDialog.show();
+				
+			}
+		});
+    	btn_round.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				PopUpNum(gobalround,gobalround,0,0,0,0, player_name);
+			}
+		});
+    	btn_end.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				btn_start.setVisibility(View.VISIBLE);
+		    	btn_clear.setVisibility(View.VISIBLE);
+		    	btn_round.setVisibility(View.GONE);
+		    	btn_end.setVisibility(View.GONE);
+		    	setting.setVisibility(View.VISIBLE);
+			}
+		});
     	insectnum.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -120,9 +189,15 @@ public class BigdeeFragment extends Fragment {
         		    Toast.makeText(getActivity(),
         		      "List View Clicked:" + position, Toast.LENGTH_LONG)
         		      .show();
-    				PopUpNum(position+1,gobalround,userArray.get(position).getplayer1(),userArray.get(position).getplayer2(),
-    						userArray.get(position).getplayer3(),userArray.get(position).getplayer4(), player_name);
+        		    int p1=solvepowerresult(rule, userArray.get(position).getplayer1()) ;
+        		    int p2=solvepowerresult(rule, userArray.get(position).getplayer2()) ;
+        		    int p3=solvepowerresult(rule, userArray.get(position).getplayer3()) ;
+        		    int p4=solvepowerresult(rule, userArray.get(position).getplayer4()) ;
 
+    				//PopUpNum(position+1,gobalround,userArray.get(position).getplayer1(),userArray.get(position).getplayer2(),
+    						//userArray.get(position).getplayer3(),userArray.get(position).getplayer4(), player_name);
+    				PopUpNum(position+1,gobalround,p1,p2,
+    						p3,p4, player_name);
         		   }
         		  });
 
@@ -133,7 +208,7 @@ public class BigdeeFragment extends Fragment {
             @Override
             public void onClick(View v) {
             	//player= ((TextView)v).getText().toString();
-            	showPopUpPhone(player_name,textplayer1,"player1",0);
+            	setplayername(player_name,textplayer1,0);
             	}
             });
         textplayer2.setOnClickListener(new OnClickListener() {
@@ -141,7 +216,7 @@ public class BigdeeFragment extends Fragment {
             @Override
             public void onClick(View v) {
             	//player= ((TextView)v).getText().toString();
-            	showPopUpPhone(player_name,textplayer2,"player2",1);
+            	setplayername(player_name,textplayer2,1);
             	}
             });
         textplayer3.setOnClickListener(new OnClickListener() {
@@ -149,7 +224,7 @@ public class BigdeeFragment extends Fragment {
 		    @Override
 		    public void onClick(View v) {
 		    	//player= ((TextView)v).getText().toString();
-		    	showPopUpPhone(player_name,textplayer3,"player3",2);
+		    	setplayername(player_name,textplayer3,2);
 		    	}
 		    });
 		textplayer4.setOnClickListener(new OnClickListener() {
@@ -157,7 +232,7 @@ public class BigdeeFragment extends Fragment {
 		    @Override
 		    public void onClick(View v) {
 		    	//player= ((TextView)v).getText().toString();
-		    	showPopUpPhone(player_name,textplayer4,"player4",3);
+		    	setplayername(player_name,textplayer4,3);
 		    	}
 		    });
         return rootView;
@@ -165,12 +240,12 @@ public class BigdeeFragment extends Fragment {
     }
     
     
-    private  void showPopUpPhone( final String[] name, final TextView v,final String def,final int playernum) {  
+    private  void setplayername( final String[] name, final TextView v,final int playernum) {  
         AlertDialog.Builder helpBuilder = new AlertDialog.Builder(getActivity());  
-        helpBuilder.setTitle("Edit name ");  
+        helpBuilder.setTitle("Edit "+name[playernum]+" name");  
         final EditText input = new EditText(getActivity());  
         input.setSingleLine();  
-        input.setText(name[playernum]); //Set the text we want to edit  
+        input.setHint(name[playernum]); //Set the text we want to edit  
         helpBuilder.setView(input);  
         
        //Save button  
@@ -178,10 +253,8 @@ public class BigdeeFragment extends Fragment {
          new DialogInterface.OnClickListener() {  
          public void onClick(DialogInterface dialog, int which) {  
            //Save info here  
-        	 if(input.getText().toString().matches("")){
-        		 v.setText(def);
-        		 name[playernum]= def;
-        	 }else{
+        	 if(!input.getText().toString().matches(""))
+        	 {
         	v.setText(input.getText());
         	Editable newTxt=(Editable)input.getText(); 
         	name[playernum]= newTxt.toString();
@@ -281,6 +354,29 @@ public class BigdeeFragment extends Fragment {
 				dialog.dismiss();
 			}
 		});
+		Button clearbtn = (Button) dialog.findViewById(R.id.clearbtn);
+		if(round<totalround){
+			clearbtn.setVisibility(View.VISIBLE);
+			dialog.setTitle("Edit Round: "+round+" Result");
+
+		}
+		// if button is clicked, close the custom dialog
+		clearbtn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				userArray.get(round-1).setplayer1(0);
+				userArray.get(round-1).setplayer2(0);
+				userArray.get(round-1).setplayer3(0);
+				userArray.get(round-1).setplayer4(0);
+				userArray.get(round-1).setplayer1_text("0");
+				userArray.get(round-1).setplayer2_text("0");
+				userArray.get(round-1).setplayer3_text("0");
+				userArray.get(round-1).setplayer4_text("0");
+				userAdapter.notifyDataSetChanged();
+				updatereselt(userArray,moneypercard,reseltplayer1,reseltplayer2,reseltplayer3,reseltplayer4);
+				dialog.dismiss();
+			}
+		});
 		dialog.show();
 		/*helpBuilder.setTitle("Enter Result");  
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -336,7 +432,7 @@ public class BigdeeFragment extends Fragment {
 private void popupsetting(final TextView money_text) {  
 	final Dialog dialog = new Dialog(getActivity());
 	dialog.setContentView(R.layout.setting);
-	dialog.setTitle("Setting");
+	dialog.setTitle("Rules Setting");
 	final EditText money=(EditText)dialog.findViewById(R.id.edit_text);
 	final EditText power=(EditText)dialog.findViewById(R.id.edit_power);
 	final NumberPicker picknum1 = (NumberPicker) dialog.findViewById(R.id.numberPicker1);
@@ -344,19 +440,8 @@ private void popupsetting(final TextView money_text) {
 	picknum1.setMinValue(1);    
 	picknum1.setValue(1);
 	final TextView alertruletext=(TextView)dialog.findViewById(R.id.rulestext);
-	if(rule.size()==0){
-		alertruletext.setText("No rules yet");
-	}else{
-	for(int i = 0 ; i < rule.size() ; i++) {
-		if(i==0){
-			alertruletext.append("Rules: >=" + rule.get(i).getcardnum() + 
-				" X " + rule.get(i).getpower());
-		}else{
-			alertruletext.append(", >=" + rule.get(i).getcardnum() + 
-					" X " + rule.get(i).getpower());
-		}
-	}
-	}
+	showruletext(rule, alertruletext);
+	dialog.setCancelable(false);
 	Button addbtn = (Button) dialog.findViewById(R.id.addbtn);
 	// if button is clicked, close the custom dialog
 	addbtn.setOnClickListener(new OnClickListener() {
@@ -369,24 +454,22 @@ private void popupsetting(final TextView money_text) {
 				
 			}else if(findcardnum(picknum1.getValue())){
 				Toast.makeText(getActivity(),
-	        		      "the card number condition is chosen", Toast.LENGTH_LONG)
+	        		      "the card number:"+picknum1.getValue()+" condition is changed", Toast.LENGTH_LONG)
 	        		      .show();
-				
+				for(int i=0;i<rule.size();i++){
+			        if(rule.get(i).getcardnum()==picknum1.getValue() ){
+			        	rule.get(i).setpower(Integer.parseInt(power.getText().toString()));
+			            break;
+			        }
+				}
+				showruletext(rule, ruletext);
+				showruletext(rule, alertruletext);
 			}else{
 				
 				rule.add(new rules(picknum1.getValue(),Integer.parseInt(power.getText().toString()))) ; 
 				showruletext(rule, ruletext);
-				alertruletext.setText("");
-				
-				for(int i = 0 ; i < rule.size() ; i++) {
-					if(i==0){
-						alertruletext.append("Rules: >=" + rule.get(i).getcardnum() + 
-							" X " + rule.get(i).getpower());
-					}else{
-						alertruletext.append(", >=" + rule.get(i).getcardnum() + 
-								" X " + rule.get(i).getpower());
-					}
-				}
+				showruletext(rule, alertruletext);
+
 			}
 			
 		
@@ -441,7 +524,9 @@ private void popupsetting(final TextView money_text) {
 			 }   
 			});
 		ruletext.setText("");
-		
+		if(rule.size()==0){
+			ruletext.setText("No rules yet");
+		}else{
 		for(int i = 0 ; i < rule.size() ; i++) {
 			
 			if(i==0){
@@ -453,6 +538,7 @@ private void popupsetting(final TextView money_text) {
 				}
     	  
     	}
+		}
 	}
 	Boolean findcardnum(int cardnum){
 		Boolean exist = false;
@@ -472,6 +558,24 @@ private void popupsetting(final TextView money_text) {
 	        if(input >= rule.get(i).getcardnum() ){
 	        	output=input*rule.get(i).getpower();
 	            break;
+	        }
+		}
+		return output;
+	}
+	int solvepowerresult(ArrayList<rules> rule, int input) {
+		int output=input;
+		int temp=0;
+		for(int r=1;r<14;r++){
+			temp=r;
+		for(int i=0;i<rule.size();i++){
+	        if(r >= rule.get(i).getcardnum() ){
+	        	temp=r*rule.get(i).getpower();
+	            break;
+	        }
+		}
+		if(input==temp){
+	        	output= r;
+	        	break;
 	        }
 		}
 		return output;

@@ -5,12 +5,215 @@
     android:orientation="vertical"
     android:background="#fff" >
      
-    <TextView android:layout_width="fill_parent"
+    <LinearLayout
+    android:id="@+id/settingLayout"
+    android:layout_marginTop="10dp"
+    
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Design Top Rated Screen"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:orientation="horizontal"
+ 
+         >
+         <LinearLayout
+    android:id="@+id/settingtextlayout"
+      android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+ 
+         >
+     <TextView
+         android:id="@+id/cardpermoney"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="2"
+                android:textSize = "16sp"   
+         android:textColor="#000"
+         android:text="$/card: 1" />
+      <TextView
+         android:id="@+id/rulestext"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_weight="2"
+                android:textSize = "16sp"   
+         android:textColor="#000"
+         android:text="No rules" />
+</LinearLayout>
+      <Button
+          android:id="@+id/setting"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginRight="10dp"
+          android:background="@drawable/setting" />
+
+    </LinearLayout>
+   <LinearLayout
+       android:id="@+id/linearLayout"
+            android:layout_below="@+id/settingLayout"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="50dp"
+       android:gravity="center"
+       android:orientation="horizontal" >
+
+       <TextView
+           android:id="@+id/player"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="Player: "
+           android:textColor="#000"
+           android:textSize="10sp" />
+
+       <TextView
+           android:id="@+id/player1_name"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="player1"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+       <TextView
+           android:id="@+id/player2_name"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="player2"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+       <TextView
+           android:id="@+id/player3_name"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="player3"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+   </LinearLayout>
+
+ <ListView
+     android:id="@+id/listView"
+     android:layout_below="@+id/linearLayout"
+     android:layout_width="fill_parent"
+     android:layout_height="300dp"
+     android:layout_alignParentLeft="true"
+     android:cacheColorHint="#00000000" >
+ </ListView>
+ <LinearLayout
+       android:id="@+id/linearLayout2"
+       android:layout_below="@+id/listView"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_alignParentLeft="true"
+       
+       android:gravity="center"
+       android:orientation="horizontal" >
+
+       <TextView
+           android:id="@+id/player"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="Result: "
+           android:textColor="#000"
+           android:textSize="10sp" />
+
+       <TextView
+           android:id="@+id/totalplayer1"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="0"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+       <TextView
+           android:id="@+id/totalplayer2"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="0"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+       <TextView
+           android:id="@+id/totalplayer3"
+           android:layout_width="66dp"
+           android:layout_height="wrap_content"
+           android:layout_weight="2"
+           android:text="0"
+           android:textColor="#000"
+           android:textSize="16sp" />
+
+       
+   </LinearLayout>
+ <Button
+     android:id="@+id/enter"
+      android:layout_below="@+id/linearLayout2"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentBottom="true"
+     android:layout_alignParentLeft="true"
+     android:layout_marginLeft="58dp"
+       android:visibility="gone" 
+     android:text="INSERT" />
+
+ <LinearLayout
+     android:id="@+id/buttons"
+        android:orientation="horizontal"
+           android:layout_below="@+id/linearLayout2"
+        android:paddingLeft="4.0dip"
+        android:paddingTop="5.0dip"
+        android:paddingRight="4.0dip"
+        android:paddingBottom="1.0dip"
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content"
+        >
+
+<Button
+    android:duplicateParentState="true"
+    android:id="@+id/button_insert"
+    android:layout_width="0.0dip"
+    android:layout_height="fill_parent"
+    android:text="Insert Round"
+    android:textColor="#000"
+    android:visibility="gone" 
+    android:layout_weight="1.0"/>
+
+<Button
+    android:duplicateParentState="true"
+    android:id="@+id/button_end"
+    android:layout_width="0.0dip"
+    android:layout_height="fill_parent"
+    android:textColor="#000"
+    android:text="End Game"
+    android:visibility="gone" 
+    android:layout_weight="1.0"/>
+<Button
+        android:duplicateParentState="true"
+    android:id="@+id/button_start"
+    android:layout_width="0.0dip"
+    android:layout_height="fill_parent"
+    android:textColor="#000"
+    android:text="Start Game" 
+    android:layout_weight="1.0"/>
+<Button
+        android:duplicateParentState="true"
+    android:id="@+id/button_clear"
+    android:layout_width="0.0dip"
+    android:layout_height="fill_parent"
+    android:textColor="#000"
+    android:text="Clear All Record"
+    android:layout_weight="1.0" />
+
+    </LinearLayout>
      
  
 </RelativeLayout>
