@@ -11,13 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class fragment2 extends Fragment {
 	 OnHeadlineSelectedListener mCallback;
 
 	    // Container Activity must implement this interface
 	    public interface OnHeadlineSelectedListener {
-	        public void onArticleSelected(int position);
+	        public void onArticleSelected(String input);
 	    }
 	    
 	    @Override
@@ -37,6 +38,8 @@ public class fragment2 extends Fragment {
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	  View view = inflater.inflate(R.layout.fragment2, null);
 	  Button button = (Button) view.findViewById(R.id.back);
+	  Button enter = (Button) view.findViewById(R.id.enter);
+	  final EditText input = (EditText) view.findViewById(R.id.edit_text);
 	  //button.setText("horizontal");
 	  button.setOnClickListener(new OnClickListener() {
 		  
@@ -49,6 +52,16 @@ public class fragment2 extends Fragment {
 		     ft.replace(R.id.layoutToReplace, fh);
 		     ft.commit();
 		     
+		   }
+		  });
+	  
+	  enter.setOnClickListener(new OnClickListener() {
+		  
+		   @Override
+		   public void onClick(View v) {
+		        String in = input.getText().toString();
+
+		        mCallback.onArticleSelected(in);
 		   }
 		  });
 	  return view;

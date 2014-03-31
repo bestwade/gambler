@@ -9,13 +9,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class fragment1 extends Fragment {
-	  
+	  TextView text;
 	 @Override
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	  View view = inflater.inflate(R.layout.fragment1, null);
 	  Button button = (Button) view.findViewById(R.id.next);
+	  text =(TextView) view.findViewById(R.id.textView1);
 	  //button.setText("horizontal");
 	  button.setOnClickListener(new OnClickListener() {
 		  
@@ -32,5 +34,9 @@ public class fragment1 extends Fragment {
 		  });
 	  return view;
 	 }
-	 
+	 public void updatetextview(String input) {
+		 
+		 text.setText(input);
+		 
+	 }
 	}

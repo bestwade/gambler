@@ -12,10 +12,25 @@
         android:text="222222"
         android:textSize = "60sp"   
  />
+ 
+ <EditText  
+    android:id="@+id/edit_text"    
+    
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"   
+    android:hint="input text plzzzzz"
+    />  
+    <Button
+          android:id="@+id/enter"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginRight="10dp"
+          android:text="enter"/>
 <Button
           android:id="@+id/back"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginRight="10dp"
           android:text="back"/>
+
 </LinearLayout>
