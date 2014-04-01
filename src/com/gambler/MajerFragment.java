@@ -27,8 +27,8 @@ public class MajerFragment extends Fragment implements fragment2.OnHeadlineSelec
         // The user selected the headline of an article from the HeadlinesFragment
         // Do something here to display that article
 
-        fragment1 f1 = (fragment1)
-                getFragmentManager().findFragmentById(R.id.layoutToReplace);
+        fragment1 f1 = new fragment1();
+
 
         if (f1 != null) {
             // If article frag is available, we're in two-pane layout...

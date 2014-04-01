@@ -18,7 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 public  class MainActivity extends FragmentActivity implements
-ActionBar.TabListener ,fragment2.OnHeadlineSelectedListener {
+ActionBar.TabListener  {
 	private ViewPager viewPager;
     private TabsPagerAdapter mAdapter;
     private ActionBar actionBar;
@@ -112,17 +112,5 @@ ActionBar.TabListener ,fragment2.OnHeadlineSelectedListener {
         Intent i = new Intent(MainActivity.this, about.class);
         startActivity(i);
     }
-    public void onArticleSelected(String input) {
-        // The user selected the headline of an article from the HeadlinesFragment
-        // Do something here to display that article
-
-        fragment1 f1 = (fragment1) getFragmentManager().findFragmentById(R.id.layoutToReplace);
-
-        if (f1 != null) {
-            // If article frag is available, we're in two-pane layout...
-
-            // Call a method in the ArticleFragment to update its content
-            f1.updatetextview(input);
-        } 
-    }
+    
 }
