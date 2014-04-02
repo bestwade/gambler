@@ -8,33 +8,45 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class MajerFragment extends Fragment implements fragment2.OnHeadlineSelectedListener {
-	
+public class MajerFragment extends Fragment  {
+	Fragment fragment1;
+	//implements fragment2.OnHeadlineSelectedListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
  
         View rootView = inflater.inflate(R.layout.majer, container, false);
-        fragment1 fv = new fragment1();
+        //fragment1 fv = new fragment1();
+        
+         fragment1 = getFragmentManager().findFragmentByTag("show");  
+        Fragment fragment2 = getFragmentManager().findFragmentByTag("input");  
         FragmentManager  fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.layoutToReplace, fv);
+       // ft.add(R.id.layoutToReplace, fv);
+        //ft.addToBackStack(null);
+      
+        //ft.add(R.id.layoutToReplace, fragment1);
+        //ft.add(R.id.layoutToReplace, fragment2);
+        ft.show(fragment1);
+        ft.hide(fragment2);
+        //ft.addToBackStack(null);
+       // ft.addToBackStack("show");
         ft.commit();
         return rootView;
     }
     
-    public void onArticleSelected(String input) {
+   /* public void onArticleSelected(String input) {
         // The user selected the headline of an article from the HeadlinesFragment
         // Do something here to display that article
 
-        fragment1 f1 = new fragment1();
+        //fragment1 f1 = new fragment1();
 
 
-        if (f1 != null) {
+        if (fragment1 != null) {
             // If article frag is available, we're in two-pane layout...
 
             // Call a method in the ArticleFragment to update its content
-            f1.updatetextview(input);
+           ((fragment1) fragment1).updatetextview(input);
         } /*else {
             // Otherwise, we're in the one-pane layout and must swap frags...
 
@@ -53,6 +65,6 @@ public class MajerFragment extends Fragment implements fragment2.OnHeadlineSelec
 
             // Commit the transaction
             transaction.commit();
-        }*/
-    }
+        }
+    }*/
 }

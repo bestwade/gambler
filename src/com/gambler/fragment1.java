@@ -28,7 +28,8 @@ public class fragment1 extends Fragment {
 	  text =(TextView) view.findViewById(R.id.textView1);
 	  if (sharedpreferences.contains(Name))
       {
-         text.setText(sharedpreferences.getString(Name, ""));
+         //text.setText(sharedpreferences.getString(Name, ""));
+		  //updatetextview(sharedpreferences.getString(Name, ""));
 
       }
 	  //button.setText("horizontal");
@@ -36,20 +37,27 @@ public class fragment1 extends Fragment {
 		  
 		   @Override
 		   public void onClick(View v) {
-		    fragment2 fh = new fragment2();
+			   Fragment fragment1 = getFragmentManager().findFragmentByTag("show");  
+		        Fragment fragment2 = getFragmentManager().findFragmentByTag("input");  
+			   
+		    //fragment2 fh = new fragment2();
 		     FragmentManager fm = getFragmentManager();
 		     FragmentTransaction ft = fm.beginTransaction();
-		     
-		     ft.replace(R.id.layoutToReplace, fh);
+		     ft.show(fragment2);
+		     ft.hide(fragment1);
+		     //ft.addToBackStack("show");
+		     //ft.replace(R.id.layoutToReplace, fh);
 		     ft.commit();
 		     
 		   }
 		  });
 	  return view;
 	 }
+	 
 	 public void updatetextview(String input) {
 		 
 		 text.setText(input);
 		 
 	 }
 	}
+//http://cheng-min-i-taiwan.blogspot.hk/2013/01/fragment.html

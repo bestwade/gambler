@@ -4,7 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000" >
-     
+     <fragment
+    android:id="@+id/show"
+    android:tag="show"
+    android:name="com.gambler.fragment1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1" />
+     <fragment
+    android:id="@+id/input"
+    android:tag="input"
+    android:name="com.gambler.fragment2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1" />
    <LinearLayout 
        android:id="@+id/layoutToReplace" 
        android:layout_height="wrap_content" 
@@ -12,5 +25,12 @@
        android:orientation="vertical">
      
     </LinearLayout>
-  
+    
+   <LinearLayout 
+       android:id="@+id/inputlayout" 
+       android:layout_height="wrap_content" 
+       android:layout_width="wrap_content" 
+       android:orientation="vertical">
+     
+    </LinearLayout>
 </RelativeLayout>

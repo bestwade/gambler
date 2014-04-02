@@ -17,11 +17,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class fragment2 extends Fragment {
-	 OnHeadlineSelectedListener mCallback;
+	 //OnHeadlineSelectedListener mCallback;
 	 public static final String MyPREFERENCES = "MyPrefs" ;
 	   public static final String Name = "nameKey"; 
 	    // Container Activity must implement this interface
-	    public interface OnHeadlineSelectedListener {
+	    /*public interface OnHeadlineSelectedListener {
 	        public void onArticleSelected(String input);
 	    }
 	    
@@ -37,12 +37,13 @@ public class fragment2 extends Fragment {
 	            throw new ClassCastException(activity.toString()
 	                    + " must implement OnHeadlineSelectedListener");
 	        }
-	    }
+	    }*/
 	 @Override
 	 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 	  View view = inflater.inflate(R.layout.fragment2, null);
 	  Button button = (Button) view.findViewById(R.id.back);
 	  Button enter = (Button) view.findViewById(R.id.enter);
+	  
 	  final EditText input = (EditText) view.findViewById(R.id.edit_text);
 	  //button.setText("horizontal");
 	  final SharedPreferences sharedpreferences = this.getActivity().getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -55,12 +56,15 @@ public class fragment2 extends Fragment {
 			   Editor editor = sharedpreferences.edit();
 			      editor.putString(Name, in);
 			      editor.commit();
-			    fragment1 fh = new fragment1();
-			   
+			    //fragment1 fh = new fragment1();
+			      Fragment fragment1 = getFragmentManager().findFragmentByTag("show");  
+			        Fragment fragment2 = getFragmentManager().findFragmentByTag("input");  
 		     FragmentManager fm = getFragmentManager();
-		     FragmentTransaction ft = fm.beginTransaction();
-		     
-		     ft.replace(R.id.layoutToReplace, fh);
+		    FragmentTransaction ft = fm.beginTransaction();
+		     //fm.popBackStack();
+		     ft.hide(fragment2);
+		     ft.show(fragment1);
+		   // fm.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE); 
 		     ft.commit();
 		  
 		   }
@@ -71,8 +75,11 @@ public class fragment2 extends Fragment {
 		   @Override
 		   public void onClick(View v) {
 		        String in = input.getText().toString();
-
-		        mCallback.onArticleSelected(in);
+		        Fragment fragment1 = getFragmentManager().findFragmentByTag("show");  
+		        ((fragment1) fragment1).updatetextview(in);
+		        //mCallback.onArticleSelected(in);
+		       // Fragment fragmentlay = getFragmentManager().findFragmentByTag("ground");  
+		        //((fragment1) fragmentlay).updatetextview(in);
 		   }
 		  });
 	  return view;
